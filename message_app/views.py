@@ -28,3 +28,15 @@ def message_view(request):
 
     context = {'messageboard': messageboard, 'form': form}
     return render(request, 'a_message/index.html', context)
+
+
+@login_required
+def subscribe(request):
+    messageboard = get_object_or_404(MessageBoard, id=1)
+
+    if request.user not in messageboard.subscriber.all():
+        messageboard.subscriber.add(request.user)
+    else:
+        messageboard.subscriber.remove(request.user)
+
+    return redirect('messageboard')

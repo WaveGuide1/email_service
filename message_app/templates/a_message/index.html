@@ -50,13 +50,13 @@
 
         <div class="p-6 hidden md:block">
             <div class="mb-12">
-                {% if user in messageboard.subscribers.all %}
+                {% if user in messageboard.subscriber.all %}
                 <h2>You are subscribed!</h2>
                 {% else %}
                 <h2>Subscribe</h2>
                 {% endif %}
                 <div class="block text-sm mb-2">Subscribe to this Message Board to get email notifications and newsletters</div>
-                {% if user in messageboard.subscribers.all %}
+                {% if user in messageboard.subscriber.all %}
                 <a href="{% url 'subscribe' %}" class="inline-block bg-gray-300 hover:bg-red-500 text-white font-bold rounded-full py-3 px-4">Unsubscribe</a>
                 {% else %}
                 <a href="{% url 'subscribe' %}" class="inline-block bg-black hover:bg-emerald-500 text-white font-bold rounded-full py-3 px-4">Subscribe</a>
@@ -64,10 +64,10 @@
             </div>
 
             <div class="rounded-2xl border-2 border-gray-200 p-4">
-                <h2>{{ messageboard.subscribers.count }} subscriber{{ messageboard.subscribers.count|pluralize }}</h2>
+                <h2>{{ messageboard.subscriber.count }} subscriber{{ messageboard.subscriber.count|pluralize }}</h2>
                 <ul class="grid grid-cols-3">
 
-                    {% for subscriber in messageboard.subscribers.all %}
+                    {% for subscriber in messageboard.subscriber.all %}
                     <li class="block mb-2">
                         <a href="{% url 'profile' subscriber.username %}">
                             <div class="flex justify-center">
