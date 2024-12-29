@@ -27,6 +27,7 @@ urlpatterns = [
     path('', include('home_app.urls')),
     path('profile/', include('users_app.urls')),
     path('@<username>/', profile_view, name="profile"),
+    path('messageboard/', include('message_app.urls')),
 ]
 
 # Only used when DEBUG=True, whitenoise can serve files when DEBUG=False
