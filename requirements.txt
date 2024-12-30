@@ -1,5 +1,6 @@
-Django
+Django~=5.1.4
 pillow
 django-cleanup
-django-allauth
+django-allauth~=65.3.0
 django-htmx
+python-dotenv~=1.0.1
