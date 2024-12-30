@@ -12,8 +12,8 @@ class MessageBoard(models.Model):
 
 
 class Message(models.Model):
-    messageboard = models.ForeignKey(MessageBoard, on_delete=models.CASCADE, related_name='messageboard')
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='message')
+    messageboard = models.ForeignKey(MessageBoard, on_delete=models.CASCADE, related_name='messages')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='messages')
     body = models.TextField(max_length=3000)
     created_at = models.DateTimeField(auto_now_add=True)
 
