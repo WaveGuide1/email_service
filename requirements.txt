@@ -4,3 +4,4 @@ django-cleanup
 django-allauth~=65.3.0
 django-htmx
 python-dotenv~=1.0.1
+celery~=5.4.0

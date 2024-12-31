@@ -8,6 +8,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 from message_app.forms import MessageForm
 from message_app.models import MessageBoard
+from message_app.task import send_email_task
 
 
 # Create your views here.
@@ -57,10 +58,5 @@ def send_email(message):
         subject = f"Message from {message.author.profile.name}"
         body = f"{message.author.profile.name}: {message.body}\n\nRegards from \n Email Service"
 
-        email_threading = threading.Thread(target=send_email_using_thread, args=(subject, body, subscriber))
-        email_threading.start()
+        send_email_task.delay(subject, body, subscriber.email)
 
-
-def send_email_using_thread(subject, body, subscriber):
-    email = EmailMessage(subject, body, to=[subscriber.email])
-    email.send()
