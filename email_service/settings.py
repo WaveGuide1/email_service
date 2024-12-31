@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'home_app',
     'users_app',
     'message_app',
+    'django_celery_results',
 ]
 
 SITE_ID = 1
@@ -169,3 +170,5 @@ ACCOUNT_EMAIL_REQUIRED = True
 
 CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
 CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_RESULT_EXTENDED = True
