@@ -91,3 +91,11 @@ def profile_delete_view(request):
         return redirect('home')
 
     return render(request, 'a_users/profile_delete.html')
+
+
+@login_required
+def subscribe_newsletter(request):
+    user = request.user
+    user.profile.unsubscribe_newsletter = not user.profile.unsubscribe_newsletter
+    user.profile.save()
+    return redirect('profile-settings')
