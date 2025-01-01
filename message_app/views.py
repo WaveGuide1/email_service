@@ -1,6 +1,6 @@
 
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import render, get_object_or_404, redirect
 
 from message_app.forms import MessageForm
@@ -56,4 +56,13 @@ def send_email(message):
         body = f"{message.author.profile.name}: {message.body}\n\nRegards from \n Email Service"
 
         send_email_task.delay(subject, body, subscriber.email)
+
+
+def is_staff(user):
+    return user.is_staff
+
+
+@user_passes_test(is_staff)
+def newsletter(request):
+    return render(request, 'a_message/newsletter.html')
 
