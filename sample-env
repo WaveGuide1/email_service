@@ -6,3 +6,11 @@ EMAIL_PORT=''
 CELERY_BROKER_URL=''
 
 SECRET_KEY=''
+
+Database settings
+
+DB_NAME=db_name
+DB_USER=db_username
+DB_PASSWORD=your_password
+DB_HOST=db_host
+DB_PORT=db_port e.g 5432
